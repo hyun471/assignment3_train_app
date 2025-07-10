@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/seat/seat_page.dart';
 
 class SelectSeatButton extends StatelessWidget {
   @override
@@ -9,7 +10,16 @@ class SelectSeatButton extends StatelessWidget {
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.purple),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return SeatPage();
+                },
+              ),
+            );
+          },
           child: Text(
             '좌석 선택',
             style: TextStyle(
