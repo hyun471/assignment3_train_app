@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/train_list/train_list_page.dart';
 
 class SelectStationBox extends StatelessWidget {
-  SelectStationBox(this.destination);
-  String destination;
+  SelectStationBox(this.stationLabel, this.selectedStaionName,
+      this.onSelectedStation);
+
+  String stationLabel;
+  String selectedStaionName;
+  void Function(String stationName, String stationLabel)
+      onSelectedStation;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          destination,
+          stationLabel,
           style: TextStyle(
             fontSize: 16,
             color: Colors.grey,
@@ -23,13 +29,14 @@ class SelectStationBox extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return TrainListPage();
+                    return TrainListPage(
+                        stationLabel, onSelectedStation);
                   },
                 ),
               );
             },
             child: Text(
-              '선택',
+              selectedStaionName,
               style: TextStyle(
                 fontSize: 40,
               ),

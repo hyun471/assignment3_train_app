@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/train_list/widgets/station_list.dart';
 
 class TrainListPage extends StatelessWidget {
+  TrainListPage(this.stationLabel, this.onSelectedStation);
+
+  String stationLabel;
+  void Function(String staionName, String stationLabel)
+      onSelectedStation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,23 +15,23 @@ class TrainListPage extends StatelessWidget {
           title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('출발역'),
+          Text(stationLabel),
           SizedBox(width: 56),
         ],
       )),
       body: Column(
         children: [
-          StationList('수서'),
-          StationList('동탄'),
-          StationList('평택지제'),
-          StationList('천안아산'),
-          StationList('오송'),
-          StationList('대전'),
-          StationList('김천구미'),
-          StationList('동대구'),
-          StationList('경주'),
-          StationList('울산'),
-          StationList('부산'),
+          StationList('수서', stationLabel, onSelectedStation),
+          StationList('동탄', stationLabel, onSelectedStation),
+          StationList('평택지제', stationLabel, onSelectedStation),
+          StationList('천안아산', stationLabel, onSelectedStation),
+          StationList('오송', stationLabel, onSelectedStation),
+          StationList('대전', stationLabel, onSelectedStation),
+          StationList('김천구미', stationLabel, onSelectedStation),
+          StationList('동대구', stationLabel, onSelectedStation),
+          StationList('경주', stationLabel, onSelectedStation),
+          StationList('울산', stationLabel, onSelectedStation),
+          StationList('부산', stationLabel, onSelectedStation),
         ],
       ),
     );

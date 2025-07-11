@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/home/home_page.dart';
 
 class StationList extends StatelessWidget {
-  StationList(this.stationName);
+  StationList(
+    this.stationName,
+    this.stationLabel,
+    this.onSelectedStation,
+  );
+
   String stationName;
+  String stationLabel;
+  void Function(String staionName, String stationLabel)
+      onSelectedStation;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,13 +32,9 @@ class StationList extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
+                onSelectedStation(stationName, stationLabel);
+                Navigator.pop(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return HomePage();
-                    },
-                  ),
                 );
               },
               child: Text(
