@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/train_list/train_list_page.dart';
 
 class SelectStationBox extends StatelessWidget {
+  SelectStationBox(this.destination);
+  String destination;
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          '출발역',
+          destination,
           style: TextStyle(
             fontSize: 16,
             color: Colors.grey,

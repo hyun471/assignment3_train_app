@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SelectStationBox(),
+                      SelectStationBox('출발역'),
                       SizedBox(width: 50),
                       Container(
                         width: 2,
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.grey[400],
                       ),
                       SizedBox(width: 50),
-                      SelectStationBox(),
+                      SelectStationBox('도착역'),
                     ]),
               ),
             ),
