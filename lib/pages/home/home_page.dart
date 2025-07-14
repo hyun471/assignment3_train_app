@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Center(child: Text('기차 예매')),
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Theme.of(context).focusColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -39,9 +39,10 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 200,
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
+                  color: Theme.of(context).hoverColor,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: Theme.of(context).dividerColor)),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

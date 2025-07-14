@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/home/home_page.dart';
+import 'package:flutter_train_app/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage());
+    return MaterialApp(
+        themeMode: ThemeMode.system,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        home: HomePage());
   }
 }

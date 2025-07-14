@@ -13,20 +13,21 @@ class SeatList extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        seatList('A', columnLabel),
+        seatList(context, 'A', columnLabel),
         SizedBox(width: 4),
-        seatList('B', columnLabel),
+        seatList(context, 'B', columnLabel),
         SizedBox(width: 4),
         label(columnLabel),
         SizedBox(width: 4),
-        seatList('C', columnLabel),
+        seatList(context, 'C', columnLabel),
         SizedBox(width: 4),
-        seatList('D', columnLabel),
+        seatList(context, 'D', columnLabel),
       ],
     );
   }
 
-  GestureDetector seatList(String rowName, int colNum) {
+  GestureDetector seatList(
+      BuildContext context, String rowName, int colNum) {
     return GestureDetector(
       onTap: () {
         onSelcetedSeat(rowName, colNum);
@@ -36,8 +37,8 @@ class SeatList extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
           color: rowName == row && colNum == col
-              ? Colors.purple
-              : Colors.grey[200],
+              ? Theme.of(context).highlightColor
+              : Theme.of(context).dividerColor,
           borderRadius: BorderRadius.circular(8),
         ),
       ),

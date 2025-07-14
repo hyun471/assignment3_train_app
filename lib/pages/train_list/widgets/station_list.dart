@@ -21,7 +21,8 @@ class StationList extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
-                  color: Colors.grey[300]!, width: 2))),
+                  color: Theme.of(context).dividerColor,
+                  width: 2))),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(

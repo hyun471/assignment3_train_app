@@ -13,8 +13,6 @@ class SelectSeatButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.purple),
           onPressed: () {
             if (arrivalStation != '선택' &&
                 departureStation != '선택') {
@@ -32,7 +30,6 @@ class SelectSeatButton extends StatelessWidget {
           child: Text(
             '좌석 선택',
             style: TextStyle(
-              color: Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),

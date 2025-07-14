@@ -12,7 +12,7 @@ class BottomButton extends StatelessWidget {
       height: 120,
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).hoverColor,
           boxShadow: [
             BoxShadow(
                 color: Colors.grey[300]!,
@@ -36,8 +36,7 @@ class BottomButton extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.circular(20)),
-                          backgroundColor: Colors.purple),
+                                  BorderRadius.circular(20))),
                       onPressed: () {
                         if (selectedRow == null &&
                             selectedCol == null) {
@@ -75,7 +74,6 @@ class BottomButton extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
                         ),
                       )),
                 ),

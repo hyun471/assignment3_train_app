@@ -21,7 +21,7 @@ class SelectStationBox extends StatelessWidget {
           stationLabel,
           style: TextStyle(
             fontSize: 16,
-            color: Colors.grey,
+            color: Theme.of(context).highlightColor,
             fontWeight: FontWeight.bold,
           ),
         ),
