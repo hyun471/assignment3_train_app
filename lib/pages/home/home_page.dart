@@ -42,21 +42,23 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Spacer(),
                     SelectStationBox(
                         '출발역', arrivalStation, onChangedStation),
-                    SizedBox(width: 50),
+                    Spacer(),
                     Container(
                       width: 2,
                       height: 50,
                       color: Colors.grey[400],
                     ),
-                    SizedBox(width: 50),
+                    Spacer(),
                     SelectStationBox('도착역', departureStation,
                         onChangedStation),
+                    Spacer(),
                   ]),
             ),
             SizedBox(height: 20),
-            SelectSeatButton(),
+            SelectSeatButton(arrivalStation, departureStation),
             Spacer(),
           ],
         ),

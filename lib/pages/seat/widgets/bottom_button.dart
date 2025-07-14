@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BottomButton extends StatelessWidget {
+  BottomButton(this.selectedRow, this.selectedCol);
+  String? selectedRow;
+  int? selectedCol;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,28 +39,36 @@ class BottomButton extends StatelessWidget {
                                   BorderRadius.circular(20)),
                           backgroundColor: Colors.purple),
                       onPressed: () {
-                        showCupertinoDialog(
-                            context: context,
-                            builder: (context) {
-                              return CupertinoAlertDialog(
-                                title: Text('예약 하시겠습니까?'),
-                                content: Text('좌석 번호 : A - 1'),
-                                actions: [
-                                  CupertinoDialogAction(
-                                    isDefaultAction: true,
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .pop();
-                                    },
-                                    child: Text('취소'),
-                                  ),
-                                  CupertinoDialogAction(
+                        if (selectedRow == null &&
+                            selectedCol == null) {
+                        } else {
+                          showCupertinoDialog(
+                              context: context,
+                              builder: (context) {
+                                return CupertinoAlertDialog(
+                                  title: Text('예약 하시겠습니까?'),
+                                  content: Text(
+                                      '좌석 번호 : $selectedRow - $selectedCol'),
+                                  actions: [
+                                    CupertinoDialogAction(
                                       isDefaultAction: true,
-                                      onPressed: () {},
-                                      child: Text('확인'))
-                                ],
-                              );
-                            });
+                                      onPressed: () {
+                                        Navigator.of(context)
+                                            .pop();
+                                      },
+                                      child: Text('취소'),
+                                    ),
+                                    CupertinoDialogAction(
+                                        isDefaultAction: true,
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text('확인'))
+                                  ],
+                                );
+                              });
+                        }
                       },
                       child: Text(
                         '예매 하기',

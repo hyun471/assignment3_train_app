@@ -1,44 +1,56 @@
 import 'package:flutter/material.dart';
 
 class SeatList extends StatelessWidget {
-  SeatList(this.columnLabel);
-  String columnLabel;
+  SeatList(
+      this.columnLabel, this.row, this.col, this.onSelcetedSeat);
+  int columnLabel;
+  String? row;
+  int? col;
+  void Function(String row, int col) onSelcetedSeat;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        seatList(),
+        seatList('A', columnLabel),
         SizedBox(width: 4),
-        seatList(),
+        seatList('B', columnLabel),
         SizedBox(width: 4),
         label(columnLabel),
         SizedBox(width: 4),
-        seatList(),
+        seatList('C', columnLabel),
         SizedBox(width: 4),
-        seatList(),
+        seatList('D', columnLabel),
       ],
     );
   }
 
-  Container seatList() {
-    return Container(
-      width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(8),
+  GestureDetector seatList(String rowName, int colNum) {
+    return GestureDetector(
+      onTap: () {
+        onSelcetedSeat(rowName, colNum);
+      },
+      child: Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+          color: rowName == row && colNum == col
+              ? Colors.purple
+              : Colors.grey[200],
+          borderRadius: BorderRadius.circular(8),
+        ),
       ),
     );
   }
 
-  SizedBox label(String label) {
+  SizedBox label(int label) {
     return SizedBox(
       width: 50,
       height: 50,
       child: Center(
         child: Text(
-          label,
+          '$label',
           style: TextStyle(
             fontSize: 18,
           ),
