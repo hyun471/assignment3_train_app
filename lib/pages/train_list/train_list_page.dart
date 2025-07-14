@@ -2,11 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/train_list/widgets/station_list.dart';
 
 class TrainListPage extends StatelessWidget {
-  TrainListPage(this.stationLabel, this.onSelectedStation);
+  TrainListPage(this.stationLabel, this.selectedList,
+      this.onSelectedStation);
 
   String stationLabel;
+  List<String> selectedList;
   void Function(String staionName, String stationLabel)
       onSelectedStation;
+
+  List<String> stationList = [
+    '수서',
+    '동탄',
+    '평택지제',
+    '천안아산',
+    '오송',
+    '대전',
+    '김천구미',
+    '동대구',
+    '경주',
+    '울산',
+    '부산'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +37,11 @@ class TrainListPage extends StatelessWidget {
       )),
       body: Column(
         children: [
-          StationList('수서', stationLabel, onSelectedStation),
-          StationList('동탄', stationLabel, onSelectedStation),
-          StationList('평택지제', stationLabel, onSelectedStation),
-          StationList('천안아산', stationLabel, onSelectedStation),
-          StationList('오송', stationLabel, onSelectedStation),
-          StationList('대전', stationLabel, onSelectedStation),
-          StationList('김천구미', stationLabel, onSelectedStation),
-          StationList('동대구', stationLabel, onSelectedStation),
-          StationList('경주', stationLabel, onSelectedStation),
-          StationList('울산', stationLabel, onSelectedStation),
-          StationList('부산', stationLabel, onSelectedStation),
+          for (int i = 0; i < stationList.length; i++) ...[
+            if (!selectedList.contains(stationList[i]))
+              StationList(stationList[i], stationLabel,
+                  onSelectedStation),
+          ]
         ],
       ),
     );

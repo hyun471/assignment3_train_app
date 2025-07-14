@@ -10,6 +10,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String arrivalStation = '선택';
   String departureStation = '선택';
+  List<String> selectedList = [];
+
   void onChangedStation(
       String stationName, String stationLabel) {
     setState(() {
@@ -18,6 +20,7 @@ class _HomePageState extends State<HomePage> {
       } else if (stationLabel == '도착역') {
         departureStation = stationName;
       }
+      selectedList = [arrivalStation, departureStation];
     });
   }
 
@@ -42,19 +45,25 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Spacer(),
-                    SelectStationBox(
-                        '출발역', arrivalStation, onChangedStation),
-                    Spacer(),
+                    Expanded(
+                      child: SelectStationBox(
+                          '출발역',
+                          arrivalStation,
+                          selectedList,
+                          onChangedStation),
+                    ),
                     Container(
                       width: 2,
                       height: 50,
                       color: Colors.grey[400],
                     ),
-                    Spacer(),
-                    SelectStationBox('도착역', departureStation,
-                        onChangedStation),
-                    Spacer(),
+                    Expanded(
+                      child: SelectStationBox(
+                          '도착역',
+                          departureStation,
+                          selectedList,
+                          onChangedStation),
+                    ),
                   ]),
             ),
             SizedBox(height: 20),

@@ -3,10 +3,12 @@ import 'package:flutter_train_app/pages/train_list/train_list_page.dart';
 
 class SelectStationBox extends StatelessWidget {
   SelectStationBox(this.stationLabel, this.selectedStaionName,
-      this.onSelectedStation);
+      this.selectedList, this.onSelectedStation);
 
   String stationLabel;
   String selectedStaionName;
+  List<String> selectedList;
+
   void Function(String stationName, String stationLabel)
       onSelectedStation;
 
@@ -29,8 +31,8 @@ class SelectStationBox extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return TrainListPage(
-                        stationLabel, onSelectedStation);
+                    return TrainListPage(stationLabel,
+                        selectedList, onSelectedStation);
                   },
                 ),
               );
