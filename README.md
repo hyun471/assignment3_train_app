@@ -1,16 +1,29 @@
 # flutter_train_app
+## 프로젝트 소개
+##### 출발역과 도착역을 입력하여 좌석을 예매할 수 있는 앱입니다.
 
-A new Flutter project.
 
-## Getting Started
+## 개발 기간
+##### 2025.06.30 ~ 2025.07.04
 
-This project is a starting point for a Flutter application.
+## 개발 환경
+##### Dart
 
-A few resources to get you started if this is your first Flutter project:
+## 주요 기능
+- Home 화면 출발역 및 도착역 선택
+  - 출발역 또는 도착역의 선택을 누르게 되면 선택할 수 있는 역의 리스트가 나오게됩니다.
+  - 역을 선택하면 출발 또는 도착에 역이 들어가게됩니다.
+  - 출발역과 도착역을 전부 선택하면 좌석 선택 버튼을 눌러 좌석 선택 페이지로 이동이 가능합니다.
+  - 출발과 도착의 역 이름으 스위치 아이콘을 통해 바꿀 수 있습니다.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 좌석 선택 화면
+  - 좌석 선택 페이지에서는 행선지를 표시하고 총 20*4의 좌석을 선택할 수 있습니다.
+  - 좌석 선택
+    - 좌석을 선택하게 되면 선택된 좌석이 보라색으로 표시됩니다.
+    - 이때 예매하기 버튼을 누르게 된다면 해당된 좌석이 맞는지 확인 절차 메세지가 나옵니다.
+      - 확인을 누르면 예매가 완료됩니다.
+      - 취소를 누르면 다시 좌석 선택으로 돌아갑니다.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 예매한 좌석 티켓은 홈화면에서 오른쪽 하단에 티켓 버튼을 통해 예약 확인 페이지에서 확인이 가능합니다.
+  - 예약 확인 페이지에서 지금까지 예약한 좌석 티켓을 확인이 가능합니다.
+    - 티켓은 출발역, 도착역, 좌석 위치가 표시됩니다.
