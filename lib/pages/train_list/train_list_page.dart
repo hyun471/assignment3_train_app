@@ -22,7 +22,7 @@ class TrainListPage extends StatelessWidget {
     '경주',
     '울산',
     '부산'
-  ];
+  ]; // 역 리스트에 사용될 역이름
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class TrainListPage extends StatelessWidget {
           Text(stationLabel),
           SizedBox(width: 56),
         ],
-      )),
+      )), // AppBar에 표시될 text
       body: Column(
         children: [
           for (int i = 0; i < stationList.length; i++) ...[
@@ -42,7 +42,7 @@ class TrainListPage extends StatelessWidget {
               StationList(stationList[i], stationLabel,
                   onSelectedStation),
           ]
-        ],
+        ], // 역 이름 리스트를 StationList 박스로 나열
       ),
     );
   }

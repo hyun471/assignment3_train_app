@@ -43,7 +43,7 @@ class SelectStationBox extends StatelessWidget {
                 fontSize: 40,
               ),
             )),
-      ],
+      ], // 역 선택 전 박스 옵션
     );
   }
 }

@@ -26,14 +26,14 @@ class SelectSeatButton extends StatelessWidget {
                 ),
               );
             }
-          },
+          }, // 역이 선택이면 좌석 선택 페이지로 넘어가지 않음
           child: Text(
             '좌석 선택',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
-          )),
+          )), // 버튼 속 text 옵션
     );
   }
 }

@@ -21,7 +21,7 @@ class _SeatPageState extends State<SeatPage> {
       selectedRow = row;
       selectedCol = col;
     });
-  }
+  } // 역 선택 시 사용될 좌표
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _SeatPageState extends State<SeatPage> {
             SizedBox(width: 56),
           ],
         ),
-      ),
+      ), // AppBar 옵션
       body: Column(
         children: [
           Row(
@@ -57,7 +57,7 @@ class _SeatPageState extends State<SeatPage> {
                     color: Theme.of(context).highlightColor),
               ),
             ],
-          ),
+          ), // 출발역, 도착역 역이름 및 아이콘 UI 표시
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -65,7 +65,7 @@ class _SeatPageState extends State<SeatPage> {
               SizedBox(width: 20),
               selectSeat(false),
             ],
-          ),
+          ), // 좌석의 선택 유무 UI 표시
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -77,7 +77,7 @@ class _SeatPageState extends State<SeatPage> {
               SizedBox(width: 4),
               label('D'),
             ],
-          ),
+          ), // 좌석의 행 레이블 표시
           Expanded(
             child: Padding(
               padding:
@@ -92,8 +92,8 @@ class _SeatPageState extends State<SeatPage> {
                 ],
               ),
             ),
-          ),
-          BottomButton(selectedRow, selectedCol)
+          ), // 좌석 및 좌석의 열 레이블 표시
+          BottomButton(selectedRow, selectedCol) // 예매하기 버튼
         ],
       ),
     );
@@ -112,7 +112,7 @@ class _SeatPageState extends State<SeatPage> {
         ),
       ),
     );
-  }
+  } // 좌석 행 레이블 위젯
 
   Row selectSeat(bool isSelected) {
     String selectedName;
@@ -133,5 +133,5 @@ class _SeatPageState extends State<SeatPage> {
         Text(selectedName),
       ],
     );
-  }
+  } // 좌석 선택 유무 박스 위젯
 }

@@ -24,7 +24,7 @@ class SeatList extends StatelessWidget {
         seatList(context, 'D', columnLabel),
       ],
     );
-  }
+  } // 좌석 과 열 레이블 배열 방식
 
   GestureDetector seatList(
       BuildContext context, String rowName, int colNum) {
@@ -43,7 +43,7 @@ class SeatList extends StatelessWidget {
         ),
       ),
     );
-  }
+  } // 좌석 위젯 및 선택했을 때 변경되는 사항
 
   SizedBox label(int label) {
     return SizedBox(
@@ -58,5 +58,5 @@ class SeatList extends StatelessWidget {
         ),
       ),
     );
-  }
+  } // 좌석 열 레이블 위젯
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/pages/home/home_page.dart';
 
 class StationList extends StatelessWidget {
   StationList(
@@ -49,6 +48,6 @@ class StationList extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ); // 역 이름, 아래 테두리 박스
   }
 }

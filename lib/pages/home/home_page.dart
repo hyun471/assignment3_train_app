@@ -21,7 +21,14 @@ class _HomePageState extends State<HomePage> {
         departureStation = stationName;
       }
       selectedList = [arrivalStation, departureStation];
-    });
+    }); // 역 선택 후 홈화면에 표시 함수
+  }
+
+  void onReverseStation(String orginalArr, String orginalDep) {
+    setState(() {
+      arrivalStation = orginalDep;
+      departureStation = orginalArr;
+    }); // 출발역과 도착역 스위치 함수
   }
 
   @override
@@ -52,11 +59,30 @@ class _HomePageState extends State<HomePage> {
                           arrivalStation,
                           selectedList,
                           onChangedStation),
-                    ),
-                    Container(
-                      width: 2,
-                      height: 50,
-                      color: Colors.grey[400],
+                    ), // 출발역 표시 박스
+                    Column(
+                      children: [
+                        Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            onReverseStation(arrivalStation,
+                                departureStation);
+                          },
+                          child: Icon(
+                            Icons.sync_alt,
+                            size: 30,
+                            color:
+                                Theme.of(context).highlightColor,
+                          ), // 출발역, 도착역 스위치 아이콘
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          width: 2,
+                          height: 50,
+                          color: Colors.grey[400],
+                        ), // 구분선
+                        Spacer(),
+                      ],
                     ),
                     Expanded(
                       child: SelectStationBox(
@@ -64,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                           departureStation,
                           selectedList,
                           onChangedStation),
-                    ),
+                    ), // 도착역 표시 박스
                   ]),
             ),
             SizedBox(height: 20),
