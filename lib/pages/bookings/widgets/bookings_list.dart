@@ -3,32 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/model/ticket.dart';
 
 class BookingsList extends StatelessWidget {
-  BookingsList(this.bookedNum);
+  BookingsList(this.bookedNum, this.thicketList);
   int bookedNum;
+  List<Ticket> thicketList;
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments
-        as List<Ticket>;
     return Container(
       height: 100,
       width: double.infinity,
       child: Row(
         children: [
-          bookedStaionName(context, args, bookedNum),
+          bookedStaionName(context, thicketList, bookedNum),
           Container(
             width: 2,
             height: 50,
             color: Colors.grey[400],
           ),
           Expanded(
-              child: bookedSeatNum(context, args, bookedNum))
+              child:
+                  bookedSeatNum(context, thicketList, bookedNum))
         ],
       ),
     );
-  }
+  } // 예약 좌석 정보 박스 위젯
 
-  Container bookedSeatNum(
-      BuildContext context, List<Ticket> args, int bookedNum) {
+  Container bookedSeatNum(BuildContext context,
+      List<Ticket> thicketList, int bookedNum) {
     return Container(
       height: 80,
       decoration: BoxDecoration(
@@ -43,7 +43,7 @@ class BookingsList extends StatelessWidget {
                 fontSize: 15,
               )),
           Text(
-            '${args[bookedNum].rowNum} - ${args[bookedNum].colNum}',
+            '${thicketList[bookedNum].rowNum} - ${thicketList[bookedNum].colNum}',
             style: TextStyle(
               fontSize: 28,
               color: Theme.of(context).highlightColor,
@@ -53,10 +53,10 @@ class BookingsList extends StatelessWidget {
         ],
       ),
     );
-  }
+  } // 예약한 좌석 위치 정보 박스
 
-  Container bookedStaionName(
-      BuildContext context, List<Ticket> args, int bookedNum) {
+  Container bookedStaionName(BuildContext context,
+      List<Ticket> thicketList, int bookedNum) {
     return Container(
       height: 80,
       width: 250,
@@ -71,7 +71,8 @@ class BookingsList extends StatelessWidget {
           children: [
             Expanded(
               child: Center(
-                child: Text('${args[bookedNum].arrStation}',
+                child: Text(
+                    '${thicketList[bookedNum].arrStation}',
                     style: TextStyle(
                       fontSize: 25,
                       color: Theme.of(context).highlightColor,
@@ -84,7 +85,8 @@ class BookingsList extends StatelessWidget {
             SizedBox(width: 5),
             Expanded(
               child: Center(
-                child: Text('${args[bookedNum].depStation}',
+                child: Text(
+                    '${thicketList[bookedNum].depStation}',
                     style: TextStyle(
                       fontSize: 25,
                       color: Theme.of(context).highlightColor,
@@ -96,5 +98,5 @@ class BookingsList extends StatelessWidget {
         ),
       ),
     );
-  }
+  } // 예약한 티켓 출발역, 도착역 정보 박스
 }

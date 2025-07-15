@@ -5,8 +5,9 @@ import 'package:flutter_train_app/pages/bookings/widgets/bookings_list.dart';
 class MyBookingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments
-        as List<Ticket>;
+    final thicketList = ModalRoute.of(context)!
+        .settings
+        .arguments as List<Ticket>;
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -21,10 +22,10 @@ class MyBookingsPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: Column(
           children: [
-            for (var i = 0; i < args.length; i++) ...[
-              BookingsList(i),
-              if (i < args.length) SizedBox(height: 4)
-            ]
+            for (var i = 0; i < thicketList.length; i++) ...[
+              BookingsList(i, thicketList),
+              if (i < thicketList.length) SizedBox(height: 4)
+            ] // 예매 리스트 나열
           ],
         ),
       ), // 예매 리스트 확인

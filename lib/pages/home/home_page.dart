@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   void onBooked(Ticket ticket) {
     ticketList.add(ticket);
-  }
+  } // 예약 좌석 정보저장(출발역, 도착역, 좌석 위치)
 
   void onChangedStation(
       String stationName, String stationLabel) {
