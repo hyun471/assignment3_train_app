@@ -1,28 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/model/ticket.dart';
 
 class BookingsList extends StatelessWidget {
+  BookingsList(this.bookedNum);
+  int bookedNum;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    final args = ModalRoute.of(context)!.settings.arguments
+        as List<Ticket>;
     return Container(
       height: 100,
       width: double.infinity,
       child: Row(
         children: [
-          bookedStaionName(context),
+          bookedStaionName(context, args, bookedNum),
           Container(
             width: 2,
             height: 50,
             color: Colors.grey[400],
           ),
-          Expanded(child: bookedSeatNum(context))
+          Expanded(
+              child: bookedSeatNum(context, args, bookedNum))
         ],
       ),
     );
   }
 
-  Container bookedSeatNum(BuildContext context) {
+  Container bookedSeatNum(
+      BuildContext context, List<Ticket> args, int bookedNum) {
     return Container(
       height: 80,
       decoration: BoxDecoration(
@@ -37,7 +43,7 @@ class BookingsList extends StatelessWidget {
                 fontSize: 15,
               )),
           Text(
-            'A-13',
+            '${args[bookedNum].rowNum} - ${args[bookedNum].colNum}',
             style: TextStyle(
               fontSize: 28,
               color: Theme.of(context).highlightColor,
@@ -49,7 +55,8 @@ class BookingsList extends StatelessWidget {
     );
   }
 
-  Container bookedStaionName(BuildContext context) {
+  Container bookedStaionName(
+      BuildContext context, List<Ticket> args, int bookedNum) {
     return Container(
       height: 80,
       width: 250,
@@ -64,7 +71,7 @@ class BookingsList extends StatelessWidget {
           children: [
             Expanded(
               child: Center(
-                child: Text('금청구청',
+                child: Text('${args[bookedNum].arrStation}',
                     style: TextStyle(
                       fontSize: 25,
                       color: Theme.of(context).highlightColor,
@@ -77,7 +84,7 @@ class BookingsList extends StatelessWidget {
             SizedBox(width: 5),
             Expanded(
               child: Center(
-                child: Text('부산',
+                child: Text('${args[bookedNum].depStation}',
                     style: TextStyle(
                       fontSize: 25,
                       color: Theme.of(context).highlightColor,

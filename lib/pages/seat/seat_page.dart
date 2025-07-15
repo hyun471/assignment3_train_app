@@ -93,7 +93,11 @@ class _SeatPageState extends State<SeatPage> {
               ),
             ),
           ), // 좌석 및 좌석의 열 레이블 표시
-          BottomButton(selectedRow, selectedCol) // 예매하기 버튼
+          BottomButton(
+              widget.arrivalStation,
+              widget.departureStation,
+              selectedRow,
+              selectedCol) // 예매하기 버튼
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -103,19 +107,12 @@ class _SeatPageState extends State<SeatPage> {
             Expanded(
                 child: IconButton(
                     onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        '/homePage',
-                        (Route<dynamic> route) => false,
-                      );
+                      Navigator.pop(context);
                     },
                     icon: Icon(Icons.home))),
             Expanded(
               child: IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                        context, '/myBookingsPage');
-                  },
+                  onPressed: () {},
                   icon: Icon(Icons.confirmation_num)),
             )
           ],

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/model/ticket.dart';
 import 'package:flutter_train_app/pages/seat/seat_page.dart';
 
 class SelectSeatButton extends StatelessWidget {
-  SelectSeatButton(this.arrivalStation, this.departureStation);
+  SelectSeatButton(
+      this.arrivalStation, this.departureStation, this.onbooked);
 
   String arrivalStation;
   String departureStation;
+
+  void Function(Ticket) onbooked;
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +17,10 @@ class SelectSeatButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             if (arrivalStation != '선택' &&
                 departureStation != '선택') {
-              Navigator.push(
+              final result = await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
@@ -25,6 +29,9 @@ class SelectSeatButton extends StatelessWidget {
                   },
                 ),
               );
+              if (result != null) {
+                onbooked(result);
+              }
             }
           }, // 역이 선택이면 좌석 선택 페이지로 넘어가지 않음
           child: Text(

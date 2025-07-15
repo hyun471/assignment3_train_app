@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/model/ticket.dart';
 
 class BottomButton extends StatelessWidget {
-  BottomButton(this.selectedRow, this.selectedCol);
+  BottomButton(this.arrStation, this.depStation,
+      this.selectedRow, this.selectedCol);
+  String arrStation;
+  String depStation;
   String? selectedRow;
   int? selectedCol;
 
@@ -37,41 +41,46 @@ class BottomButton extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.circular(20))),
-                      onPressed: () {
+                      onPressed: () async {
                         if (selectedRow == null &&
                             selectedCol == null) {
                         } else {
-                          showCupertinoDialog(
-                              context: context,
-                              builder: (context) {
-                                return CupertinoAlertDialog(
-                                  title: Text('예약 하시겠습니까?'),
-                                  content: Text(
-                                      '좌석 번호 : $selectedRow - $selectedCol'),
-                                  actions: [
-                                    CupertinoDialogAction(
-                                      isDefaultAction: true,
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('취소'),
-                                    ),
-                                    CupertinoDialogAction(
-                                        isDefaultAction: true,
-                                        onPressed: () {
-                                          Navigator
-                                              .pushNamedAndRemoveUntil(
-                                            context,
-                                            '/homePage',
-                                            (Route<dynamic>
-                                                    route) =>
-                                                false,
-                                          );
-                                        },
-                                        child: Text('확인'))
-                                  ],
-                                );
-                              });
+                          bool? result =
+                              await showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return CupertinoAlertDialog(
+                                      title: Text('예약 하시겠습니까?'),
+                                      content: Text(
+                                          '좌석 번호 : $selectedRow - $selectedCol'),
+                                      actions: [
+                                        CupertinoDialogAction(
+                                          isDefaultAction: true,
+                                          onPressed: () {
+                                            Navigator.pop(
+                                                context);
+                                          },
+                                          child: Text('취소'),
+                                        ),
+                                        CupertinoDialogAction(
+                                            isDefaultAction:
+                                                true,
+                                            onPressed: () {
+                                              Navigator.pop(
+                                                context,
+                                                true,
+                                              );
+                                            },
+                                            child: Text('확인'))
+                                      ],
+                                    );
+                                  });
+                          if (result == true) {
+                            Navigator.pop(
+                                context,
+                                Ticket(arrStation, depStation,
+                                    selectedRow!, selectedCol!));
+                          }
                         }
                       },
                       child: Text(

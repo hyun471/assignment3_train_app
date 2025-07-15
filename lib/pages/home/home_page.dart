@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/model/ticket.dart';
+import 'package:flutter_train_app/pages/bookings/widgets/bookings_list.dart';
 import 'package:flutter_train_app/pages/home/widgets/select_seat_button.dart';
 import 'package:flutter_train_app/pages/home/widgets/select_station_box.dart';
 
@@ -11,6 +13,12 @@ class _HomePageState extends State<HomePage> {
   String arrivalStation = '선택';
   String departureStation = '선택';
   List<String> selectedList = [];
+
+  List<Ticket> ticketList = [];
+
+  void onBooked(Ticket ticket) {
+    ticketList.add(ticket);
+  }
 
   void onChangedStation(
       String stationName, String stationLabel) {
@@ -94,7 +102,8 @@ class _HomePageState extends State<HomePage> {
                   ]),
             ),
             SizedBox(height: 20),
-            SelectSeatButton(arrivalStation, departureStation),
+            SelectSeatButton(
+                arrivalStation, departureStation, onBooked),
             Spacer(),
           ],
         ),
@@ -114,7 +123,8 @@ class _HomePageState extends State<HomePage> {
               child: IconButton(
                   onPressed: () {
                     Navigator.pushNamed(
-                        context, '/myBookingsPage');
+                        context, '/myBookingsPage',
+                        arguments: ticketList);
                   },
                   icon: Icon(Icons.confirmation_num)),
             )
