@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/bookings/my_bookings_page.dart';
 import 'package:flutter_train_app/pages/home/home_page.dart';
 import 'package:flutter_train_app/theme.dart';
 
@@ -12,6 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        initialRoute: '/homePage',
+        routes: {
+          '/homePage': (context) => HomePage(),
+          '/myBookingsPage': (context) => MyBookingsPage()
+        },
         themeMode: ThemeMode.system,
         theme: lightTheme,
         darkTheme: darkTheme, // 테마 설정

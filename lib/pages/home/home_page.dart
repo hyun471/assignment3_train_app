@@ -99,6 +99,28 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.popUntil(context,
+                          ModalRoute.withName('/homePage'));
+                    },
+                    icon: Icon(Icons.home))),
+            Expanded(
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                        context, '/myBookingsPage');
+                  },
+                  icon: Icon(Icons.confirmation_num)),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

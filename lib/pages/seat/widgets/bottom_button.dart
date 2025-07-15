@@ -52,16 +52,21 @@ class BottomButton extends StatelessWidget {
                                     CupertinoDialogAction(
                                       isDefaultAction: true,
                                       onPressed: () {
-                                        Navigator.of(context)
-                                            .pop();
+                                        Navigator.pop(context);
                                       },
                                       child: Text('취소'),
                                     ),
                                     CupertinoDialogAction(
                                         isDefaultAction: true,
                                         onPressed: () {
-                                          Navigator.pop(context);
-                                          Navigator.pop(context);
+                                          Navigator
+                                              .pushNamedAndRemoveUntil(
+                                            context,
+                                            '/homePage',
+                                            (Route<dynamic>
+                                                    route) =>
+                                                false,
+                                          );
                                         },
                                         child: Text('확인'))
                                   ],

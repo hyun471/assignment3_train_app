@@ -96,6 +96,31 @@ class _SeatPageState extends State<SeatPage> {
           BottomButton(selectedRow, selectedCol) // 예매하기 버튼
         ],
       ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/homePage',
+                        (Route<dynamic> route) => false,
+                      );
+                    },
+                    icon: Icon(Icons.home))),
+            Expanded(
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                        context, '/myBookingsPage');
+                  },
+                  icon: Icon(Icons.confirmation_num)),
+            )
+          ],
+        ),
+      ),
     );
   }
 
